@@ -1,0 +1,43 @@
+h1,h2,h3, h4,h5,h6,p,span {
+	margin: 0;
+}
+
+
+body {
+	background-color: var(--background-primary);
+	color: var(--text-primary);
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+	margin: 0;
+}
+
+
+.container {
+	max-width: 1576px;
+	margin: 0 auto;
+	padding: 0 80px;
+}
+
+
+
+@media (max-width: 1366px) {
+	.container {
+		padding: 0 24px;
+	}
+}
+
+
+@media (max-width: 393px) {
+	.container {
+		padding: 0 16px;
+	}
+}
+
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: 16px;
+}
+
+

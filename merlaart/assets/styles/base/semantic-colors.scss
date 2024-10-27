@@ -1,0 +1,26 @@
+@import 'colors';
+
+
+:root {
+	--background-primary: #{$brown-50};
+	--background-secondary: #{$primary-900};
+	--background-tertiary: #{$secondary-500};
+	--background-four: #{$green-900};
+	--background-five: #{$navi-900};
+
+	--text-primary: #{$primary-900};
+	--text-secondary: #{$brown-50};
+	--text-tertiary: #{$secondary-500};
+}
+
+.dark {
+	--background-primary: #{$primary-950};
+	--background-secondary: #{$primary-50};
+	--background-tertiary: #{$secondary-300};
+	--background-four: #{$green-300};
+	--background-five: #{$navi-300};
+
+	--text-primary: #{$primary-50};
+	--text-secondary: #{$brown-500};
+	--text-tertiary: #{$secondary-300};
+}

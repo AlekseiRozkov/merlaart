@@ -1,0 +1,12 @@
+.button-component {
+	background-color: var(--background-secondary);
+	color: var(--text-secondary);
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.button-component:hover {
+}

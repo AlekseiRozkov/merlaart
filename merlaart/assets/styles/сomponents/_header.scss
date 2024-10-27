@@ -1,0 +1,67 @@
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 80px;
+	max-width: 1576px;
+	margin: 0 auto;
+	padding: 0 80px;
+}
+
+.header__controls {
+	display: flex;
+	gap: 32px;
+	align-items: center;
+}
+
+.header__logo {
+	display: flex;
+	align-items: center;
+}
+
+.header__logo img {
+	height: 40px;
+	margin-right: 10px;
+}
+
+.header__description {
+	font-size: 12px;
+	color: #a33c33;
+}
+
+.header__nav ul {
+	display: flex;
+	gap: 20px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.header__nav a {
+	text-decoration: none;
+	color: var(--text-tertiary);
+	/* Цвет текста ссылок */
+	transition: color 0.3s;
+}
+
+.header__nav a:hover {
+	color: #872d2d;
+	/* Цвет при наведении */
+}
+
+.header__language-switcher {
+	font-size: 14px;
+	color: #a33c33;
+	/* Цвет текста для переключателя языка */
+}
+
+.header__language-switcher a {
+	text-decoration: none;
+	color: inherit;
+}
+
+
+
+@media (max-width: 768px) {
+	
+}
