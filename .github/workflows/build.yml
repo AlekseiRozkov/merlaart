@@ -1,0 +1,37 @@
+name: Build and Test
+
+# Запускать workflow при пуше в ветку main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Шаг 1: Клонировать репозиторий
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Шаг 2: Установить Node.js (например, версии 18)
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      # Шаг 3: Установить зависимости
+      - name: Install dependencies
+        run: npm install
+
+      # Шаг 4: Запустить сборку проекта
+      - name: Build project
+        run: npm run build
+
+      # Шаг 5 (опционально): Запустить тесты, если они есть
+      - name: Run tests
+        run: npm test
