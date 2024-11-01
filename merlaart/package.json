@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@directus/sdk": "^17.0.2",
+    "@nuxt/vite-builder": "^3.13.2",
     "axios": "^1.7.7",
     "nuxt": "^3.13.2",
     "vue": "latest",
