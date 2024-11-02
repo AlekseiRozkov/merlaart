@@ -57,7 +57,7 @@ onMounted(() => {
 }
 
 .about-info {
-  margin-top: 20px;
+  margin-top: 200px;
   text-align: center;
 }
 
