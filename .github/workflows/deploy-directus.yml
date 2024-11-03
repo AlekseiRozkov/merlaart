@@ -64,4 +64,14 @@ jobs:
             -e PUBLIC_URL=${{ secrets.PUBLIC_URL }} \
             --link directus_db \
             -p 8055:8055 \
+            -v /path/to/local/snapshot:/snapshot/snapshot \ # добавлен объем для копирования файла
             directus/directus:latest
+
+      - name: Apply snapshot in Directus container
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          script: |
+            docker exec directus_app npx directus schema apply /snapshot/snapshot
