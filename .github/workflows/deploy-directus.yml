@@ -11,6 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Clean up Docker system
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          script: |
+            docker system prune -f --volumes
+
       - name: Ensure PostgreSQL container is running
         uses: appleboy/ssh-action@v0.1.4
         with:
@@ -60,4 +69,4 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             docker cp ./merlaart-directus/snapshot directus_app:/snapshot
-            docker exec -it directus_app npx directus schema apply /snapshot
+            docker exec directus_app npx directus schema apply /snapshot
