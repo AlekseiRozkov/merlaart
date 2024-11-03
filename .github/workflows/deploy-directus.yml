@@ -19,8 +19,8 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             docker stop directus_app || true
-            docker rm directus_app || true
-
+            docker rm directus_app || true|
+            
             docker run -d --name directus_app \
             -e DB_CLIENT=pg \
             -e DB_HOST=directus_db \
