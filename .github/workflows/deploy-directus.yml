@@ -70,12 +70,12 @@ jobs:
           script: |
             echo "Current directory:"
             pwd
-            echo "List of files in current directory:"
-            ls -la
+            echo "Listing root directory:"
+            ls -la /
             echo "List of files in /github/workspace:"
-            ls -la /github/workspace
+            ls -la /github/workspace || echo "/github/workspace not found"
             echo "List of files in /github/workspace/merlaart-directus:"
-            ls -la /github/workspace/merlaart-directus
+            ls -la /github/workspace/merlaart-directus || echo "/github/workspace/merlaart-directus not found"
 
       - name: Import Collections and Data
         uses: appleboy/ssh-action@v0.1.4
