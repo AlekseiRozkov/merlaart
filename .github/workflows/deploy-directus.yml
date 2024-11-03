@@ -61,15 +61,29 @@ jobs:
             -p 8055:8055 \
             directus/directus:latest
 
-      - name: List files in workspace
+      - name: Check current directory and list files
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
+            echo "Current directory:"
+            pwd
+            echo "List of files in current directory:"
+            ls -la
+            echo "List of files in /github/workspace:"
             ls -la /github/workspace
+            echo "List of files in /github/workspace/merlaart-directus:"
             ls -la /github/workspace/merlaart-directus
+
+      - name: Import Collections and Data
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          script: |
             if [ -d /github/workspace/merlaart-directus/snapshot ]; then
               echo "Snapshot directory exists."
               ls -la /github/workspace/merlaart-directus/snapshot
