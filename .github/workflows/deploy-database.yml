@@ -9,10 +9,19 @@ on:
 jobs:
   deploy-database:
     runs-on: ubuntu-latest
-    if: env.DEPLOY_DATABASE == 'true'
 
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Load deployment config
+        run: |
+          set -a
+          source deploy-config.env
+          set +a
+
       - name: Deploy PostgreSQL to server via SSH
+        if: ${{ env.DEPLOY_DATABASE == 'true' }}
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.SERVER_HOST }}

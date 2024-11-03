@@ -11,13 +11,19 @@ on:
 jobs:
   deploy-directus:
     runs-on: ubuntu-latest
-    if: env.DEPLOY_DATABASE == 'true'
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
 
+      - name: Load deployment config
+        run: |
+          set -a
+          source deploy-config.env
+          set +a
+
       - name: Clean up Docker system
+        if: ${{ env.DEPLOY_DIRECTUS == 'true' }}
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -27,6 +33,7 @@ jobs:
             docker system prune -f --volumes
 
       - name: Ensure PostgreSQL container is running
+        if: ${{ env.DEPLOY_DIRECTUS == 'true' }}
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -46,6 +53,7 @@ jobs:
             fi
 
       - name: Deploy Directus to server via SSH
+        if: ${{ env.DEPLOY_DIRECTUS == 'true' }}
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.SERVER_HOST }}
