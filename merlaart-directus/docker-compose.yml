@@ -34,6 +34,7 @@ services:
     networks:
       - directus_network
     volumes:
+     - .:/app
       - ./uploads:/uploads
       - ./snapshot:/snapshot
 
