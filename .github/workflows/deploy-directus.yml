@@ -80,10 +80,8 @@ jobs:
             ls -la /github/workspace || echo "/github/workspace not found"
             echo "Listing /github/workspace/merlaart-directus:"
             ls -la /github/workspace/merlaart-directus || echo "/github/workspace/merlaart-directus not found"
-            echo "Searching for directories with name 'merlaart-directus':"
-            find / -type d -name "merlaart-directus" 2>/dev/null || echo "Directory 'merlaart-directus' not found"
-            echo "Searching for 'snapshot' directory in the current path:"
-            find . -type d -name "snapshot" 2>/dev/null || echo "'snapshot' directory not found"
+            echo "Searching for 'snapshot' file in the current path:"
+            find . -type f -name "snapshot" 2>/dev/null || echo "'snapshot' file not found"
 
       - name: Import Collections and Data
         uses: appleboy/ssh-action@v0.1.4
@@ -92,13 +90,13 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            SNAPSHOT_PATH=$(find . -type d -name "snapshot" 2>/dev/null | head -n 1)
+            SNAPSHOT_PATH=$(find . -type f -name "snapshot" 2>/dev/null | head -n 1)
             if [ -n "$SNAPSHOT_PATH" ]; then
-              echo "Snapshot directory found at $SNAPSHOT_PATH"
+              echo "Snapshot file found at $SNAPSHOT_PATH"
               ls -la "$SNAPSHOT_PATH"
               docker cp "$SNAPSHOT_PATH" directus_app:/snapshot
               docker exec directus_app npx directus schema apply /snapshot
             else
-              echo "Error: Snapshot directory does not exist."
+              echo "Error: Snapshot file does not exist."
               exit 1
             fi
