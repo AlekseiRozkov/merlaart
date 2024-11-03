@@ -64,7 +64,7 @@ jobs:
             -e PUBLIC_URL=${{ secrets.PUBLIC_URL }} \
             --link directus_db \
             -p 8055:8055 \
-            -v /path/to/local/snapshot:/snapshot/snapshot \ # добавлен объем для копирования файла
+            -v /path/to/local/snapshot:/snapshot/snapshot 
             directus/directus:latest
 
       - name: Apply snapshot in Directus container
