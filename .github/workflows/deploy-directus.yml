@@ -41,5 +41,5 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            docker cp ./path/to/snapshot-folder directus_app:/snapshot-folder
-            docker exec -it directus_app npx directus schema apply /snapshot-folder
+            docker cp ./snapshot directus_app:/snapshot
+            docker exec -it directus_app npx directus schema apply /snapshot
