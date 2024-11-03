@@ -9,6 +9,7 @@ on:
 jobs:
   deploy-database:
     runs-on: ubuntu-latest
+    if: env.DEPLOY_DATABASE == 'true'
 
     steps:
       - name: Deploy PostgreSQL to server via SSH

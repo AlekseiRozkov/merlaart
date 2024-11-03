@@ -8,6 +8,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    if: env.DEPLOY_FRONTEND == 'true'
 
     defaults:
       run:

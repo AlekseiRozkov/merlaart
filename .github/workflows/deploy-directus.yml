@@ -11,6 +11,7 @@ on:
 jobs:
   deploy-directus:
     runs-on: ubuntu-latest
+    if: env.DEPLOY_DATABASE == 'true'
 
     steps:
       - name: Check out repository
