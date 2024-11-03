@@ -72,10 +72,14 @@ jobs:
             pwd
             echo "Listing root directory:"
             ls -la /
-            echo "List of files in /github/workspace:"
+            echo "Listing /github:"
+            ls -la /github || echo "/github not found"
+            echo "Listing /github/workspace:"
             ls -la /github/workspace || echo "/github/workspace not found"
-            echo "List of files in /github/workspace/merlaart-directus:"
+            echo "Listing /github/workspace/merlaart-directus:"
             ls -la /github/workspace/merlaart-directus || echo "/github/workspace/merlaart-directus not found"
+            echo "Searching for directories with name 'merlaart-directus':"
+            find / -type d -name "merlaart-directus" 2>/dev/null || echo "Directory 'merlaart-directus' not found"
 
       - name: Import Collections and Data
         uses: appleboy/ssh-action@v0.1.4
