@@ -68,16 +68,15 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            ls -la
-            ls -la ./merlaart-directus
-            if [ -d ./merlaart-directus/snapshot ]; then
+            ls -la /github/workspace
+            ls -la /github/workspace/merlaart-directus
+            if [ -d /github/workspace/merlaart-directus/snapshot ]; then
               echo "Snapshot directory exists."
-              ls -la ./merlaart-directus/snapshot
+              ls -la /github/workspace/merlaart-directus/snapshot
             else
               echo "Error: Snapshot directory does not exist."
               exit 1
             fi
 
-           
-            docker cp ./merlaart-directus/snapshot directus_app:/snapshot
+            docker cp /github/workspace/merlaart-directus/snapshot directus_app:/snapshot
             docker exec directus_app npx directus schema apply /snapshot
