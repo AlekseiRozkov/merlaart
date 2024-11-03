@@ -20,7 +20,7 @@ jobs:
           script: |
             docker stop directus_app || true
             docker rm directus_app || true|
-            
+
             docker run -d --name directus_app \
             -e DB_CLIENT=pg \
             -e DB_HOST=directus_db \
@@ -41,5 +41,5 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            docker cp ./snapshot directus_app:/snapshot
+            docker cp ./merlaart-directus/snapshot directus_app:/snapshot
             docker exec -it directus_app npx directus schema apply /snapshot
