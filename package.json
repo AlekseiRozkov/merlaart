@@ -1,0 +1,24 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxtjs/i18n": "^8.5.6",
+    "nuxt": "^3.14.1592",
+    "vue": "latest",
+    "vue-i18n": "^9.14.5",
+    "vue-router": "latest",
+    "vue-waterfall-plugin-next": "^2.6.9"
+  },
+  "devDependencies": {
+    "sass": "^1.83.0",
+    "sass-loader": "^16.0.4"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "et": {
+    "title": "Marika",
+    "subtitle": "Piilu teise maailma läbi maalide",
+    "button": "Vaata lähemalt",
+    "image": "/img/art/hero.jpg",
+    "lastname": "Rõžkova"
+  },
+  "ru": {
+    "title": "Марика",
+    "subtitle": "Загляни в другой мир через картины",
+    "button": "Посмотреть",
+    "image": "/img/art/hero.jpg",
+    "lastname": "Рыжкова"
+  }
+}

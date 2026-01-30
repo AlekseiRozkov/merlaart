@@ -1,0 +1,48 @@
+@use 'media' as *;
+@use 'token' as *;
+
+:root {
+	--title-size: min(5vw, 5em);
+}
+
+h1, h2, h3, h4, h5, h6, p, a, li, ul, ol, span, strong, em {
+   padding: 0;
+   margin: 0;
+   font-style: normal;
+   font-weight: 400;
+	 line-height: 120%;
+   letter-spacing: normal;
+}
+
+h1 {
+   font-family: var(--font-primary);
+   font-weight: 400;
+   font-style: normal;
+   font-size: calc(var(--title-size) * 1.8);
+   line-height: 120%;
+	 color: var(--text-tertiary);
+}
+
+@include media(md) {
+	h1 {
+		font-size: calc(var(--title-size) * 4);
+		line-height: 90%;
+	}
+}
+
+
+
+h2 {
+	 font-family: var(--font-primary);
+	 font-weight: 400;
+	 font-style: normal;
+	 font-size: calc(var(--title-size) * 1.8);
+	 line-height: 1;
+	 color: var(--text-tertiary);
+}
+
+p, span, a {
+	font-family: var(--font-secondary);
+}
+
+

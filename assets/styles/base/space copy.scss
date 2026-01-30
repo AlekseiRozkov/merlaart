@@ -1,0 +1,74 @@
+/** @format */
+
+@use 'media' as *;
+
+:root {
+  --section-padding: min(15vh,15em); // Минимум: 15% высоты вьюпорта или 15em (300px при 20px базовом шрифте, 240px при 16px)
+  --section-padding-medium: min(5vh,5em); // Минимум: 10% высоты вьюпорта или 10em (200px при 20px, 160px при 16px)
+
+   --section-padding-small: min(7.5vh,7.5em); // Минимум: 7.5% высоты вьюпорта или 7.5em (150px при 20px, 120px при 16px)
+
+  --container-padding: min(10vw,10em); // Минимум: 10% ширины вьюпорта или 10em (200px при 20px, 160px при 16px)
+  --container-padding-large: clamp(1em,4vw,2.5em); // От 1em (20px при 20px, 16px при 16px) до 2.5em (50px при 20px, 40px при 16px), адаптивно с 4vw
+  --container-padding-medium: calc(--container-padding * 1.75); // Увеличенный контейнер: 175% от базового (350px при 20px, 280px при 16px)
+  --container-padding-small: calc(--container-padding * 2.5); // Ещё больше: 250% от базового (500px при 20px, 400px при 16px)
+
+
+
+
+  /* Разрывы между элементами */
+  --gap-padding: clamp(1em,4vw,2.5em); // От 1em (20px при 20px, 16px при 16px) до 2.5em (50px при 20px, 40px при 16px), адаптивно с 4vw
+  --gap-padding-big: clamp(1em,8vw,8em); // От 1em (20px при 20px, 16px при 16px) до 8em (160px при 20px, 128px при 16px), адаптивно с 8vw
+
+  /* Радиусы закругления (адаптивные с ограничениями) */
+  --border-radius: clamp(1em,1.5vw,1.5em); // От 1em (20px при 20px, 16px при 16px) до 1.5em (30px при 20px, 24px при 16px), адаптивно с 1.5vw
+  --border-radius-medium: calc(clamp(1em, 1.5vw, 1.5em) * 1.5); // Средний радиус: 150% от базового (45px при 20px, 36px при 16px)
+  --border-radius-small: calc(clamp(1em, 1.5vw, 1.5em) * 0.5); // Маленький радиус: 50% от базового (10px при 20px, 8px при 16px)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@include media(lg) {
+  :root {
+    /* Для больших экранов (lg): отступы секций увеличены */
+    --section-padding: max(2.5em,calc(5vw + 5vh)); // Максимум: 2.5em (50px при 20px, 40px при 16px) или сумма 5% ширины и высоты
+    --section-padding-medium: max(1.75em,calc(3.5vw + 3.5vh)); // Максимум: 1.75em (35px при 20px, 28px при 16px) или сумма 3.5% ширины и высоты
+    --section-padding-small: max(1.25em,calc(2vw + 2vh)); // Максимум: 1.25em (25px при 20px, 20px при 16px) или сумма 2% ширины и высоты
+    --container-padding: 7.5vw; // Фиксировано: 7.5% ширины вьюпорта
+  }
+}
+
+@include media(md) {
+  :root { /* Для средних экранов (md): отступы контейнера адаптивны */
+    --container-padding: clamp(1em,4vw,2.5em); // От 1em (20px при 20px, 16px при 16px) до 2.5em (50px при 20px, 40px при 16px), адаптивно с 4vw
+  }
+}
+
+@include media(sd) {
+  :root {
+    /* Для маленьких экранов (sd): отступы секций и радиусы пересчитаны */
+    --section-padding: max(3em,7.5vh); // Максимум: 3em (60px при 20px, 48px при 16px) или 7.5% высоты вьюпорта
+    --section-padding-medium: max(2.25em,6.25vh); // Максимум: 2.25em (45px при 20px, 36px при 16px) или 6.25% высоты вьюпорта
+    --section-padding-small: max(1.5em,5vh); // Максимум: 1.5em (30px при 20px, 24px при 16px) или 5% высоты вьюпорта
+
+    --border-radius-small: var(--border-radius); // Маленький радиус совпадает с базовым
+    --border-radius-medium: calc( var(--border-radius) * 1.5); // Средний радиус увеличен на 150% (45px при 20px, 36px при 16px)
+  }
+}
+
+/* :root {
+  --gap: calc(var(--title-size) * 0.3);
+  --section-padding: calc(var(--title-size) * 1.2);
+  --container-padding: calc(var(--gap) * 1.5);
+  --title-size: clamp(5em, 7.5vw, 7.5em);
+}
+ */

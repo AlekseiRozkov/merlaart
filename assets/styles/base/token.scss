@@ -1,0 +1,113 @@
+/* sematic colors */
+@use 'colors' ;
+
+:root {
+  --background-primary: var(--brown-50);
+  --background-secondary: var(--primary-900);
+  --background-tertiary: var(--secondary-500);
+  --background-five: var(--navi-800);
+  --background-four: var(--green-900);
+
+  --text-default: var(--primary-950);
+  --text-secondary: var(--brown-50);
+  --text-tertiary: var(--secondary-500);
+  --text-tertiary-light: var(--secondary-500-50);
+
+  --icon-default: var(--primary-950);
+  --icon-secondary: var(--brown-50);
+  --icon-tertiary: var(--secondary-500);
+
+  --button-close-button-five-background-active: var(--navi-900);
+  --button-close-button-five-background-default: var(--navi-700);
+  --button-close-button-five-icon-default: var(--brown-50);
+
+  --button-close-button-four-background-active: var(--green-950);
+  --button-close-button-four-background-default: var(--green-800);
+  --button-close-button-four-icon-default: var(--brown-50);
+
+  --button-close-button-primary-background-active: var(--brown-100);
+  --button-close-button-primary-icon-default: var(--secondary-500);
+
+  --button-close-button-secondary-background-active: var(--secondary-700);
+  --button-close-button-secondary-background-default: var(--secondary-600);
+  --button-close-button-secondary-icon-default: var(--brown-50);
+
+  --button-close-button-third-background-active: var(--primary-950);
+  --button-close-button-third-background-default: var(--primary-800);
+  --button-close-button-third-icon-default: var(--brown-50);
+
+  --button-gallery-button-color: #ffffff;
+  --button-gallery-button-icon-default: var(--secondary-500);
+  --button-gallery-button-stroke-default: var(--secondary-500);
+  --button-gallery-button-text-default: var(--secondary-500);
+
+  --button-link-primary-color: #ffffff;
+  --button-link-primary-text-default: var(--secondary-500);
+  --button-link-secondary-text-default: var(--brown-50);
+
+  --button-menu-button-background-default: var(--secondary-500);
+  --button-menu-button-background-hover: var(--secondary-600);
+  --button-menu-button-text-default: var(--brown-50);
+
+  --button-primary-background-default: var(--brown-50);
+  --button-primary-background-hover: var(--secondary-500);
+  --button-primary-stroke-default: var(--secondary-500);
+  --button-primary-text-default: var(--secondary-500);
+  --button-primary-text-hover: var(--brown-50);
+}
+
+
+[data-theme="dark"] {
+  --icon-default: var(--primary-950);
+  --icon-secondary: var(--brown-50);
+  --icon-tertiary: var(--brown-400);
+
+  --text-default: var(--secondary-100);
+  --text-secondary: var(--brown-50);
+  --text-tertiary: var(--brown-400);
+  --text-tertiary-light: var(--brown-50);
+
+	--background-five: var(--navi-800);
+  --background-four: var(--green-900);
+  --background-primary: var(--gray-900);
+  --background-secondary: var(--secondary-800);
+  --background-tertiary: var(--brown-400);
+
+  --button-close-button-five-background-active: var(--navi-900);
+  --button-close-button-five-background-default: var(--navi-700);
+  --button-close-button-five-icon-default: var(--brown-50);
+
+  --button-close-button-four-background-active: var(--green-950);
+  --button-close-button-four-background-default: var(--green-800);
+  --button-close-button-four-icon-default: var(--brown-50);
+
+  --button-close-button-primary-background-active: var(--brown-100);
+  --button-close-button-primary-icon-default: var(--secondary-500);
+
+  --button-close-button-secondary-background-active: var(--secondary-700);
+  --button-close-button-secondary-background-default: var(--secondary-600);
+  --button-close-button-secondary-icon-default: var(--brown-50);
+
+  --button-close-button-third-background-active: var(--primary-950);
+  --button-close-button-third-background-default: var(--primary-800);
+  --button-close-button-third-icon-default: var(--brown-50);
+
+  --button-gallery-button-color: #ffffff;
+  --button-gallery-button-icon-default: var(--secondary-500);
+  --button-gallery-button-stroke-default: var(--secondary-500);
+  --button-gallery-button-text-default: var(--secondary-500);
+
+  --button-link-primary-color: #ffffff;
+  --button-link-primary-text-default: var(--brown-400);
+  --button-link-secondary-text-default: var(--brown-50);
+
+  --button-menu-button-background-default: var(--secondary-500);
+  --button-menu-button-background-hover: var(--secondary-600);
+  --button-menu-button-text-default: var(--brown-50);
+
+  --button-primary-background-default: var(--gray-900);
+  --button-primary-background-hover: var(--brown-400);
+  --button-primary-stroke-default: var(--brown-400);
+  --button-primary-text-default: var(--brown-400);
+  --button-primary-text-hover: var(--gray-950);
+}

@@ -1,0 +1,156 @@
+@use 'media' as *;
+
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+li,
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+a, p {
+	text-decoration: none;
+	color: var(--text-tertiary);
+}
+
+body {
+	-webkit-font-smoothing: antialiased; 
+	font-family: var(--font-primary);
+	line-height: 1.6;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 16px;
+	font-size: clamp(16px, 1.2vw, 20px);
+}
+
+html,
+body {
+	width: 100%;
+	-webkit-font-smoothing: antialiased;
+	position: relative;
+	background-color: var(--background-primary);
+}
+
+main {
+	flex: 1;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	position: relative;
+}
+
+/* Section */
+.section {
+	display: block;
+	padding-top: var(--section-padding);
+	padding-bottom: var(--section-padding);
+	position: relative;
+	background-color: var(--background-primary);
+}
+
+.section-medium {
+	display: block;
+	padding-top: calc(var(--section-padding-medium));
+	padding-bottom: calc(var(--section-padding-medium));
+	position: relative;
+	background-color: var(--background-primary);
+}
+
+.section-wrap {
+	display: block;
+	padding-top: 0;
+	padding-bottom: 0;
+	position: relative;
+}
+
+.section.full-height {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+}
+
+.section.no-padding {
+	padding-top: unset;
+	padding-bottom: unset;
+}
+
+/* Container */
+.container {
+	margin: 0 auto;
+	padding-left: var(--container-padding);
+	padding-right: var(--container-padding);
+	max-width: 100em;
+}
+
+.container.large{
+	padding-left: var(--container-padding-large);
+	padding-right: var(--container-padding-large);
+}
+
+.container.medium{
+	padding-left: var(--container-padding-medium);
+	padding-right: var(--container-padding-medium);
+}
+
+.container.small{
+	padding-left: var(--container-padding-small);
+	padding-right: var(--container-padding-small);
+}
+
+.container.no-padding{
+	padding-left: unset;
+	padding-right: unset;
+}
+
+
+
+/* Flex */
+.row {
+	display: flex;
+/* 	flex-wrap: wrap; */
+	position: relative;
+}
+
+.row.no-flex {
+	display: block;
+}
+
+.row.no-wrap {
+	flex-wrap: nowrap;
+}
+
+.flex-col {
+	display: block;
+	width: 100%;
+	order: 2;
+	position: relative;
+}
+
+
+@include media(xl) {
+	.container {
+		padding-left: calc(var(--container-padding) / 2);
+		padding-right: calc(var(--container-padding) / 2);
+	}
+}
+
+
+@include media(md) {
+	.container {
+		padding-left: calc(var(--container-padding));
+		padding-right: calc(var(--container-padding));
+	}
+}
+
+

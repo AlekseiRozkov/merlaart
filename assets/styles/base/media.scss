@@ -1,0 +1,27 @@
+$breakpoint-xl: 1365px;
+$breakpoint-lg: 1023px;
+$breakpoint-md: 767px;
+$breakpoint-sd: 540px;
+
+@mixin media($breakpoint) {
+	@if $breakpoint == xl {
+		@media (max-width: #{$breakpoint-xl}) {
+			@content;
+		}
+  }
+  @if $breakpoint == lg {
+    @media (max-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  }
+  @else if $breakpoint == md {
+    @media (max-width: #{$breakpoint-md}) {
+      @content;
+    }
+  }
+  @else if $breakpoint == sd {
+    @media (max-width: #{$breakpoint-sd}) {
+      @content;
+    }
+  }
+}

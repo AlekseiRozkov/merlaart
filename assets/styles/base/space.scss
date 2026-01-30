@@ -1,0 +1,50 @@
+/** @format */
+
+@use 'media' as *;
+
+:root {
+  --section-padding: min(15vh,15em); 
+  --section-padding-medium: min(5vh,5em);
+  --container-padding: min(10vw,10em);
+
+  --gap-padding: clamp(1em,4vw,2.5em); 
+
+	--gap-padding-medium: calc(var(--gap-padding) * 0.8);
+
+  --border-radius: clamp(1em,1.5vw,1.5em); 
+  --border-radius-medium: calc(clamp(1em, 1.5vw, 1.5em) * 1.5);
+  --border-radius-small: calc(clamp(1em, 1.5vw, 1.5em) * 0.5); 
+}
+
+@include media(lg) {
+  :root {
+    --section-padding: max(2.5em,calc(5vw + 5vh));
+    --section-padding-medium: max(1.75em,calc(3.5vw + 3.5vh)); 
+    --section-padding-small: max(1.25em,calc(2vw + 2vh)); 
+    --container-padding: 7.5vw;
+  }
+}
+
+@include media(md) {
+  :root { 
+    --container-padding: clamp(1em,4vw,2.5em);
+  }
+}
+
+@include media(sd) {
+  :root {
+    --section-padding: max(3em,7.5vh);
+    --section-padding-medium: max(2.25em,6.25vh); 
+    --section-padding-small: max(1.5em,5vh); 
+    --border-radius-small: var(--border-radius); 
+    --border-radius-medium: calc( var(--border-radius) * 1.5);
+  }
+}
+
+/* :root {
+  --gap: calc(var(--title-size) * 0.3);
+  --section-padding: calc(var(--title-size) * 1.2);
+  --container-padding: calc(var(--gap) * 1.5);
+  --title-size: clamp(5em, 7.5vw, 7.5em);
+}
+ */
