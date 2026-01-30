@@ -1,6 +1,6 @@
 <template>
   <main class="container">
-    <h1 class="page-title">Галерея fsd</h1>
+    <h1 class="page-title">{{ pageTitle }}</h1>
 
     <!-- Фильтр скрыт сейчас, но логика уже есть -->
     <!--
@@ -16,14 +16,22 @@
       <button v-if="selectedTag" class="reset" @click="selectTag(null)">Все</button>
     </div>
     -->
-
-    <MasonryGallery :items="filtered" :gap="16" :cols="4" :md-cols="3" :sm-cols="2" />
+<WaterfallGallery
+      :items="items"
+      :chunk-size="12"
+      :progressive="true"
+      @first-ready="onFirstReady" />
+    <!-- <MasonryGallery :items="filtered" :gap="16" :cols="4" :md-cols="3" :sm-cols="2" /> -->
   </main>
 </template>
 
 <script setup lang="ts">
 import gallery from '~/content/gallery.json'
+import pages from '~/content/pages.json'
 import MasonryGallery from '~/components/ui/MasonryGallery.vue'
+
+const { locale } = useI18n()
+const pageTitle = computed(() => (pages as Record<string, { gallery: string }>)[locale.value]?.gallery ?? (pages as Record<string, { gallery: string }>).et?.gallery ?? 'Gallery')
 
 type Item = { src: string; title?: string; tags?: string[] }
 const items = (gallery.items as Item[]) || []

@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <h2>{{ footer.title }}</h2>
+
   </footer>
 </template>
 

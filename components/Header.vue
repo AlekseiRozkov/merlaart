@@ -74,3 +74,15 @@ const route = useRoute()
 const isActive = (path: string) => route.path === lp(path)
 watch(() => route.fullPath, closeMenu)
 </script>
+
+<style lang="scss">
+.nav-logo {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.lang-switcher select{
+	color: var(--text-tertiary);
+}
+</style>

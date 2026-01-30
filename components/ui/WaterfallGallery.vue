@@ -66,6 +66,7 @@ const wf    = ref<InstanceType<typeof Waterfall> | null>(null)
 const cw    = ref(0)
 const wfKey = ref(0)
 let ro: ResizeObserver | null = null
+let loadMoreFallbackTimer: ReturnType<typeof setTimeout> | null = null
 
 // данные
 const allItems     = computed(() => props.items ?? [])
@@ -79,13 +80,24 @@ const loaded = ref(0)
 const failed = ref(0)
 const firstReadyEmitted = ref(false)
 
-function refresh() { requestAnimationFrame(() => wf.value?.refresh?.()) }
+// Плагин экспортирует renderer(), не refresh(). Вызов после двух rAF даёт браузеру отрисовать img и выставить высоту — иначе карточки остаются «полосками»
+function refresh() {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      (wf.value as { renderer?: () => void } | null)?.renderer?.()
+    })
+  })
+}
 
 function loadMore() {
   const next = allItems.value.slice(cursor.value, cursor.value + props.chunkSize)
   if (!next.length) return
+  const prevLength = visibleItems.value.length
   visibleItems.value = visibleItems.value.concat(next)
   cursor.value += next.length
+  // Не сбрасываем счётчики: уже загруженные картинки не вызовут @load снова
+  const alreadyDone = prevLength
+  loaded.value = Math.max(0, alreadyDone - failed.value)
   refresh()
 }
 
@@ -147,9 +159,29 @@ onMounted(async () => {
 
   ;[200, 800, 2000].forEach(t => setTimeout(refresh, t))
   window.addEventListener('load', refresh, { once: true })
+
+  // Страховка: если часть картинок не отдала @load (lazy, кэш), через 2.5 с всё равно догружаем
+  function scheduleLoadMoreFallback() {
+    if (!hasMore.value) return
+    loadMoreFallbackTimer = setTimeout(() => {
+      loadMoreFallbackTimer = null
+      if (hasMore.value && (loaded.value + failed.value) < total.value) {
+        loadMore()
+        scheduleLoadMoreFallback()
+      }
+    }, 2500)
+  }
+  scheduleLoadMoreFallback()
 })
 
-onBeforeUnmount(() => { ro?.disconnect(); ro = null })
+onBeforeUnmount(() => {
+  ro?.disconnect()
+  ro = null
+  if (loadMoreFallbackTimer) {
+    clearTimeout(loadMoreFallbackTimer)
+    loadMoreFallbackTimer = null
+  }
+})
 
 const current = computed(() => {
   const r = rules.find(r => cw.value >= r.min) ?? rules[rules.length - 1]
@@ -158,7 +190,8 @@ const current = computed(() => {
   return { width, gutter: r.gutter, cols: r.cols }
 })
 
-watch(() => visibleItems.value.length, () => {
+// Сброс только при смене списка снаружи (items изменился)
+watch(() => props.items?.length ?? 0, () => {
   loaded.value = 0
   failed.value = 0
 })

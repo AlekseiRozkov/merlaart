@@ -2,17 +2,13 @@
   "et": {
     "menu": [
       { "label": "Avaleht", "url": "/" },
-      { "label": "Minust",  "url": "/about" },
-      { "label": "Galerii", "url": "/gallery" },
-      { "label": "Kontakt", "url": "/contact" }
+      { "label": "Galerii", "url": "/contact" }
     ]
   },
   "ru": {
     "menu": [
       { "label": "Главная", "url": "/" },
-      { "label": "Обо мне", "url": "/about" },
-      { "label": "Галерея", "url": "/gallery" },
-      { "label": "Контакт", "url": "/contact" }
+      { "label": "Галерея", "url": "/contact" }
     ]
   }
 }
